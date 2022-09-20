@@ -1,4 +1,4 @@
-import { getSeason, getSeries } from "./tmdb";
+import { getSeason, getSeries } from "../lib/tmdb";
 
 interface Event {
   start: [number, number, number];

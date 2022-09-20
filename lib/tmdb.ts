@@ -1,4 +1,4 @@
-import axios from 'axios';
+import got from 'got-cjs';
 
 interface Author {
   id: number;
@@ -83,20 +83,18 @@ interface Series {
   seasons: SeasonInfo[];
 }
 
-const client = axios.create({
-  baseURL: 'https://api.themoviedb.org/3/',
-  params: {
+const client = got.extend({
+  prefixUrl: 'https://api.themoviedb.org/3/',
+  searchParams: {
     api_key: process.env.TMDB_API_KEY,
     language: 'en'
   }
 });
 
 export const getSeries = async (id: number) => {
-  const data = await client.get<Series>(`tv/${id}`).then(res => res.data);
-  return data;
+  return client.get(`tv/${id}`).json<Series>();
 }
 
 export const getSeason = async (seriesId: number, seasonNumber: number) => {
-  const data = await client.get<Season>(`tv/${seriesId}/season/${seasonNumber}`).then(res => res.data);
-  return data;
+  return client.get(`tv/${seriesId}/season/${seasonNumber}`).json<Season>();
 }
