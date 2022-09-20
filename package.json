@@ -12,5 +12,9 @@
   "dependencies": {
     "got-cjs": "^12.3.1",
     "ics": "^2.35.0"
+  },
+  "scripts": {
+    "start": "vercel dev -d",
+    "deploy": "vercel"
   }
 }

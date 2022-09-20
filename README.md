@@ -26,9 +26,9 @@ Run the development server.
 npm run start
 ```
 
-Build application for use in production.
+Deploy application
 ```
-npm run build
+npm run deploy
 ```
 
 In order to use app add new calendar from URL.
